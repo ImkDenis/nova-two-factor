@@ -76,7 +76,7 @@ class TwoFactorController
             $url = $this->getQRCodeUsingGoogle($company, $email, $secretKey);
         } else {
             $url = (new Google2FA())->getQRCodeInline($company, $email, $secretKey, 250);
-            $isSvg = true;
+            $isSvg = str_contains($url, '<svg');
         }
 
         $data = [
